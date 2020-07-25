@@ -1,4 +1,5 @@
 const express = require('express');
+const { request, response } = require('express');
 const app = express();
 const port = 3000;
 
@@ -27,3 +28,7 @@ const data = [
     content: '日出江花红胜火，春来江水绿如蓝'
   }
 ];
+
+app.get('/posts', (request, response) => {
+  response.send(data)
+});
