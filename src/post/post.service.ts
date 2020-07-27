@@ -40,3 +40,21 @@ export const createPost = async (post: PostModel) => {
   // 提供查询
   return data;
 };
+
+/**
+ * 更新内容
+ */
+export const updatePost = async (postId: number, post: PostModel) => {
+  // 准备查询
+  const statemennt = `
+    UPDATE post
+    SET ?
+    WHERE id = ?
+  `;
+
+  // 执行查询
+  const [data] = await connection.promise().query(statemennt, [post, postId]);
+
+  // 提供数据
+  return data;
+};
