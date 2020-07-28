@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { UserModel } from './user.model';
 import * as userService from './user.service';
-import { request } from 'http';
 
 /**
  * 创建用户

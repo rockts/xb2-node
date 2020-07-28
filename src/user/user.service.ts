@@ -35,8 +35,8 @@ export const getUserByName = async (
   // 准备查询
   const statement = `
     SELECT 
-      id, 
-      name,
+      id,
+      name
       ${password ? ', password' : ''}
     FROM user
     WHERE name = ?
