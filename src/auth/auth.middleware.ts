@@ -52,7 +52,7 @@ export const authGuard = (
     if (!authorization) throw new Error();
 
     // 提取 JWT 令牌
-    const token = authorization.replace('Bearer', '');
+    const token = authorization.replace('Bearer ', '');
     if (!token) throw new Error();
 
     // 验证令牌

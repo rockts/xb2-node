@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction, response } from 'express';
 import { signToken } from './auth.service';
 
 /**
@@ -25,4 +25,15 @@ export const login = async (
   } catch (error) {
     next(error);
   }
+};
+
+/**
+ * 验证登录
+ */
+export const validate = (
+  request: Request,
+  response: Response,
+  next: NextFunction,
+) => {
+  response.sendStatus(200);
 };
