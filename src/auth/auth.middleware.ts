@@ -79,7 +79,7 @@ interface AccessControlOptions {
   possession?: boolean;
 }
 
-export const AccessControl = (options: AccessControlOptions) => {
+export const accessControl = (options: AccessControlOptions) => {
   return async (request: Request, response: Response, next: NextFunction) => {
     console.log('👮‍♀️ 访问控制');
 

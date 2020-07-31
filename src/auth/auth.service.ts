@@ -3,7 +3,7 @@ import { PRIVATE_KEY } from '../app/app.config';
 import { connection } from '../app/database/mysql';
 
 /**
- * 签发信息
+ * 签发令牌
  */
 interface SignTokenOptions {
   payload?: any;
@@ -34,16 +34,16 @@ export const possess = async (options: PossessOptions) => {
   const { resourceId, resourceType, userId } = options;
 
   // 准备查询
-  const stamement = `
-  SELECT COUNT(${resourceType}.id) as count
-  FROM ${resourceType}
-  WHRER ${resourceType}.id = ? AND userId = ?
+  const statement = `
+    SELECT COUNT(${resourceType}.id) as count
+    FROM ${resourceType}
+    WHERE ${resourceType}.id = ? AND userId = ?
   `;
 
   // 检查拥有权
   const [data] = await connection
     .promise()
-    .query(stamement, [resourceId, userId]);
+    .query(statement, [resourceId, userId]);
 
   // 提供检查结果
   return data[0].count ? true : false;
