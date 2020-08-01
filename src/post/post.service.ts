@@ -1,6 +1,5 @@
 import { connection } from '../app/database/mysql';
 import { PostModel } from './post.model';
-import { connect } from 'http2';
 /**
  * 获取内容列表
  */

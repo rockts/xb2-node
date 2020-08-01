@@ -20,9 +20,8 @@
       "/**",
       " * $1",
       " */",
-			"export const ${2:NAME} = async (",
-			"  $3"
-
+      "export const ${2:NAME} = async (",
+      "  $3",
       ") => {",
       "  $4",
       "};"
