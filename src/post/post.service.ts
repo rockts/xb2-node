@@ -1,6 +1,7 @@
 import { connection } from '../app/database/mysql';
 import { PostModel } from './post.model';
 import { sqlFragment } from './post.provider';
+
 /**
  * 获取内容列表
  */
@@ -10,12 +11,12 @@ export interface GetPostsOptionsFilter {
   param?: string;
 }
 
-interface GetPostOptions {
+interface GetPostsOptions {
   sort?: string;
   filter?: GetPostsOptionsFilter;
 }
 
-export const getPosts = async (options: GetPostOptions) => {
+export const getPosts = async (options: GetPostsOptions) => {
   const { sort, filter } = options;
 
   // SQL 参数
@@ -55,14 +56,14 @@ export const getPosts = async (options: GetPostOptions) => {
 export const createPost = async (post: PostModel) => {
   // 准备查询
   const statement = `
-  INSERT INTO post
-  SET ?
+    INSERT INTO post
+    SET ?
   `;
 
   // 执行查询
   const [data] = await connection.promise().query(statement, post);
 
-  // 提供查询
+  // 提供数据
   return data;
 };
 
@@ -71,14 +72,14 @@ export const createPost = async (post: PostModel) => {
  */
 export const updatePost = async (postId: number, post: PostModel) => {
   // 准备查询
-  const statemennt = `
+  const statement = `
     UPDATE post
     SET ?
     WHERE id = ?
   `;
 
   // 执行查询
-  const [data] = await connection.promise().query(statemennt, [post, postId]);
+  const [data] = await connection.promise().query(statement, [post, postId]);
 
   // 提供数据
   return data;
@@ -90,8 +91,8 @@ export const updatePost = async (postId: number, post: PostModel) => {
 export const deletePost = async (postId: number) => {
   // 准备查询
   const statement = `
-  DELETE FROM post
-  WHERE id = ?
+    DELETE FROM post
+    WHERE id = ?
   `;
 
   // 执行查询
@@ -107,8 +108,8 @@ export const deletePost = async (postId: number) => {
 export const createPostTag = async (postId: number, tagId: number) => {
   // 准备查询
   const statement = `
-   INSERT INTO post_tag (postId, tagId)
-   VALUES(?, ?)
+    INSERT INTO post_tag (postId, tagId)
+    VALUES(?, ?)
   `;
 
   // 执行查询
@@ -142,7 +143,7 @@ export const deletePostTag = async (postId: number, tagId: number) => {
   // 准备查询
   const statement = `
     DELETE FROM post_tag
-    WHERE postId = ? AND tagId =?
+    WHERE postId = ? AND tagId = ?
   `;
 
   // 执行查询
