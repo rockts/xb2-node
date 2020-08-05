@@ -19,14 +19,14 @@ export interface GetPostsOptionsPagination {
 interface GetPostsOptions {
   sort?: string;
   filter?: GetPostsOptionsFilter;
-  pagiantion?: GetPostsOptionsPagination;
+  pagination?: GetPostsOptionsPagination;
 }
 
 export const getPosts = async (options: GetPostsOptions) => {
   const {
     sort,
     filter,
-    pagiantion: { limit, offset },
+    pagination: { limit, offset },
   } = options;
 
   // SQL 参数
