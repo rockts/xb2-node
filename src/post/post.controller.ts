@@ -8,7 +8,7 @@ import {
   createPostTag,
   postHasTag,
   deletePostTag,
-  getPostTotalCount,
+  getPostsTotalCount,
   getPostById
 } from './post.service';
 import { TagModel } from '../tag/tag.model';
@@ -24,7 +24,7 @@ export const index = async (
 ) => {
   try {
     // 统计内容数量
-    const totalCount = await getPostTotalCount({ filter: request.filter });
+    const totalCount = await getPostsTotalCount({ filter: request.filter });
 
     // 设置响应头部
     response.header('X-Total-Count', totalCount);

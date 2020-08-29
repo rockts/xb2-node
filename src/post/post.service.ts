@@ -170,13 +170,13 @@ export const deletePostTag = async (postId: number, tagId: number) => {
 /**
  * 统计内容数量
  */
-export const getPostTotalCount = async (options: GetPostsOptions) => {
+export const getPostsTotalCount = async (options: GetPostsOptions) => {
   const { filter } = options;
 
   // SQL 参数
   let params = [filter.param];
 
-  // 准备数据
+  // 准备查询
   const statement = `
     SELECT
       COUNT(DISTINCT post.id) AS total
@@ -199,7 +199,7 @@ export const getPostTotalCount = async (options: GetPostsOptions) => {
  * 按 ID 调取内容
  */
 export const getPostById = async (postId: number) => {
-  // 准备数据
+  // 准备查询
   const statement = `
     SELECT
       post.id,
@@ -220,11 +220,11 @@ export const getPostById = async (postId: number) => {
   // 执行查询
   const [data] = await connection.promise().query(statement, postId);
 
-  // 没有找到内容
+  // 没找到内容
   if (!data[0].id) {
     throw new Error('NOT_FOUND');
   }
 
   // 提供数据
-  return data[0]
+  return data[0];
 };
