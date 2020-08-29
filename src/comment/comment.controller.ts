@@ -4,7 +4,7 @@ import {
   isReplyComment,
   updateComment,
   deleteComment,
-  getcomments,
+  getComments,
 } from './comment.service';
 
 /**
@@ -134,7 +134,7 @@ export const index = async (
 ) => {
   // 获取评论列表
   try {
-    const comments = await getcomments();
+    const comments = await getComments({ filter: request.filter });
 
     // 做出响应
     response.send(comments)
