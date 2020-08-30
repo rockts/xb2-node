@@ -22,9 +22,19 @@ export const filter = async (
     request.filter = {
       name: 'postComments',
       sql: 'comment.parentId IS NULL AND comment.postId = ?',
-      param: post,
+      param: `${post}`,
     };
-  };
+  }
+
+  // 用户的评论
+  if (user && action == 'published' && !post) {
+    request.filter = {
+      name: 'userPublished',
+      sql: 'comment.parentId IS NULL AND comment.userId = ?',
+      param: `${user}`,
+    }
+  }
+
 
   // 下一步
   next();
