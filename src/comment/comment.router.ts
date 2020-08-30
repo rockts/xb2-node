@@ -43,6 +43,11 @@ router.delete(
 router.get('/comments', filter, paginate(COMMENTS_PER_PAGE), commentController.index);
 
 /**
+ * 回复列表
+ */
+router.get('/comments/:commentId/replies', commentController.indexReplies);
+
+/**
  * 导出路由
  */
 export default router;
