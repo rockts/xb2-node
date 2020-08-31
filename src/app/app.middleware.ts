@@ -87,7 +87,10 @@ export const defaultErrorHandler = (
       statusCode = 404;
       message = '没有找到这个用户 ~~';
       break;
-
+    case 'PASSWORD_IS_THE_SAME':
+      statusCode = 400;
+      message = '要修改的密码不能与愿密码一样';
+      break;
     default:
       statusCode = 500;
       message = '服务器暂时出了点问题 ~~ 🌴';
