@@ -10,7 +10,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "prebuild": "rimraf dist",
-    "build": "tsc -p tsconfig.build.josn"
+    "build": "tsc -p tsconfig.build.json"
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
